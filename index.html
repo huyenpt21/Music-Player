@@ -11,7 +11,8 @@
         crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 
 <body>
@@ -31,7 +32,7 @@
 
             <!-- Control -->
             <div class="control">
-                <div class="btn btn-repeat">
+                <div class="btn active btn-repeat">
                     <i class="fas fa-redo"></i>
                 </div>
                 <div class="btn btn-previous">
@@ -52,50 +53,50 @@
             <input type="range" id="progress" class="progress" value="0" step="1" min="1" max="100">
 
             <audio id="audio" src=""></audio>
+        </div>
 
-            <!-- Playlist -->
-            <div class="playlist">
-                <div class="song">
-                    <div class="thumb" style="background-image: url(./assets/images/500Miles.jpg)"></div>
-                    <div class="song-body">
-                        <h3 class="title">500 Miles</h3>
-                        <p class="singer">Inside Llewyn Davis</p>
-                    </div>
-                    <div class="song-option">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
+        <!-- Playlist -->
+        <div class="playlist">
+            <div class="song active">
+                <div class="thumb" style="background-image: url(./assets/images/500Miles.jpg)"></div>
+                <div class="song-body">
+                    <h3 class="title">500 Miles</h3>
+                    <p class="singer">Inside Llewyn Davis</p>
                 </div>
-                <div class="song">
-                    <div class="thumb" style="background-image: url(./assets/images/alreadyGone.jpg)"></div>
-                    <div class="song-body">
-                        <h3 class="title">Already Gone</h3>
-                        <p class="singer">Sleeping At Last</p>
-                    </div>
-                    <div class="song-option">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
+                <div class="song-option">
+                    <i class="fas fa-ellipsis-h"></i>
                 </div>
+            </div>
+            <div class="song">
+                <div class="thumb" style="background-image: url(./assets/images/alreadyGone.jpg)"></div>
+                <div class="song-body">
+                    <h3 class="title">Already Gone</h3>
+                    <p class="singer">Sleeping At Last</p>
+                </div>
+                <div class="song-option">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
 
-                <div class="song">
-                    <div class="thumb" style="background-image: url(./assets/images/atMyWorst.jpg)"></div>
-                    <div class="song-body">
-                        <h3 class="title">At My Worst</h3>
-                        <p class="singer">Pink Sweat$</p>
-                    </div>
-                    <div class="song-option">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
+            <div class="song">
+                <div class="thumb" style="background-image: url(./assets/images/atMyWorst.jpg)"></div>
+                <div class="song-body">
+                    <h3 class="title">At My Worst</h3>
+                    <p class="singer">Pink Sweat$</p>
                 </div>
+                <div class="song-option">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
 
-                <div class="song">
-                    <div class="thumb" style="background-image: url(./assets/images/stubbornLove.jpg)"></div>
-                    <div class="song-body">
-                        <h3 class="title">Stubborn Love</h3>
-                        <p class="singer">The Lumineers</p>
-                    </div>
-                    <div class="song-option">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
+            <div class="song">
+                <div class="thumb" style="background-image: url(./assets/images/stubbornLove.jpg)"></div>
+                <div class="song-body">
+                    <h3 class="title">Stubborn Love</h3>
+                    <p class="singer">The Lumineers</p>
+                </div>
+                <div class="song-option">
+                    <i class="fas fa-ellipsis-h"></i>
                 </div>
             </div>
         </div>
