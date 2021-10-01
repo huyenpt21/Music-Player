@@ -19,6 +19,7 @@ const cdThumb = $('.cd-thumb');
 const audio = $('#audio');
 const playBtn = $('.btn-toggle-play');
 const player = $('.player');
+const progress = $('#progress');
 
 const app = {
     currentIndex: 0,
@@ -128,7 +129,6 @@ const app = {
             _this.isPlaying = false;
             audio.pause();
             player.classList.remove('playing');
-            console.log(_this.isPlaying);
 
         }
 
@@ -137,8 +137,14 @@ const app = {
             _this.isPlaying = true;
             audio.play();
             player.classList.add('playing');
-            console.log(_this.isPlaying);
         }
+
+        //when seeking the progress bar
+        audio.ontimeupdate = function() {
+            const currentPercent = Math.floor(audio.currentTime / audio.duration * 100);
+            progress.value = currentPercent;
+        }
+
     },
 
     loadCurrentSong: function () {
