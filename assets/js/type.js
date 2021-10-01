@@ -11,10 +11,18 @@
  * 10. Play song when clicked
  */
 
-const $ = document.querySelector.bind(document)
-const $$ = document.querySelectorAll.bind(document)
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+const cd = $('.cd');
+const heading = $('header h2');
+const cdThumb = $('.cd-thumb');
+const audio = $('#audio');
+const playBtn = $('.btn-toggle-play');
+const player = $('.player');
 
-const apps = {
+const app = {
+    currentIndex: 0,
+    isPlaying: false,
     songs: [
         {
             name: '500 Miles',
@@ -64,8 +72,16 @@ const apps = {
             path: './assets/music/Stubborn Love - The Lumineers.mp3',
             image: './assets/images/stubbornLove.jpg'
         },
-       
+
     ],
+
+    defineProperties: function () {
+        Object.defineProperty(this, 'currentSong', {
+            get: function () {
+                return this.songs[this.currentIndex]
+            }
+        })
+    },
 
     render: function () {
         const htmls = this.songs.map(song => {
@@ -82,11 +98,11 @@ const apps = {
             </div>
             `
         });
-       $('.playlist').innerHTML = htmls.join('');
+        $('.playlist').innerHTML = htmls.join('');
     },
 
     eventHandler: function () {
-        const cd = $('.cd');
+        //scroll playlist
         const cdWidth = cd.offsetWidth;
         document.onscroll = function () {
             const scrollIndex = window.scrollY || document.documentElement.scrollTop;
@@ -94,12 +110,49 @@ const apps = {
             cd.style.width = newCDWidth > 0 ? newCDWidth + 'px' : 0;
             cd.style.opacity = newCDWidth / cdWidth;
         }
+        
+        //click the play button
+        const _this = this;//this: app
+        playBtn.onclick = function () {
+            //if use 'this.' in here, it's mean playBtn
+            //if want call app's properties -> use 'app.' or '_this.'
+            if (_this.isPlaying) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+        }
+
+        //When the player is pausing
+        audio.onpause = function () {
+            _this.isPlaying = false;
+            audio.pause();
+            player.classList.remove('playing');
+            console.log(_this.isPlaying);
+
+        }
+
+        //when the player is playing
+        audio.onplay = function () {
+            _this.isPlaying = true;
+            audio.play();
+            player.classList.add('playing');
+            console.log(_this.isPlaying);
+        }
+    },
+
+    loadCurrentSong: function () {
+        heading.textContent = this.currentSong.name;
+        cdThumb.style.backgroundImage = `url(${this.currentSong.image})`;
+        audio.src = this.currentSong.path;
     },
 
     start: function () {
+        this.defineProperties();
         this.eventHandler();
         this.render();
+        this.loadCurrentSong();
     }
 }
 
-apps.start();
+app.start();
